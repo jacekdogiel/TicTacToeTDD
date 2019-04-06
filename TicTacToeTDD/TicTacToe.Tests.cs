@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 
 namespace TicTacToeTDD
 {
@@ -18,6 +19,15 @@ namespace TicTacToeTDD
             var game = new Game();
             game.MakeMove(1);
             Assert.AreEqual(1, game.MovesCounter);
+        }
+        [Test]
+        public void MakeInvalidMove_ThrowsException()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                var game = new Game();
+                game.MakeMove(0);
+            });
         }
     }
 }

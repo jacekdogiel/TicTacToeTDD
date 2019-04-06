@@ -1,4 +1,7 @@
-﻿namespace TicTacToeTDD
+﻿using System;
+
+
+namespace TicTacToeTDD
 {
     internal class Game
     {
@@ -11,6 +14,8 @@
 
         public void MakeMove(int index)
         {
+            if (index < 1 || index > 9)
+                throw new ArgumentOutOfRangeException();
             MovesCounter++;
         }
     }
