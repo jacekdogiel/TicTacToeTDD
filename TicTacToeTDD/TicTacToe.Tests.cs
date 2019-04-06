@@ -11,5 +11,13 @@ namespace TicTacToeTDD
             var game = new Game();
             Assert.AreEqual(0, game.MovesCounter);
         }
+
+        [Test]
+        public void MakeMove_CounterShifts()
+        {
+            var game = new Game();
+            game.MakeMove(1);
+            Assert.AreEqual(1, game.MovesCounter);
+        }
     }
 }

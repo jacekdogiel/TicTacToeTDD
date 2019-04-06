@@ -8,5 +8,10 @@
         }
 
         public double MovesCounter { get; private set; }
+
+        public void MakeMove(int index)
+        {
+            MovesCounter++;
+        }
     }
 }
