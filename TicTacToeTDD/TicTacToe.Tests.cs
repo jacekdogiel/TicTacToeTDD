@@ -7,10 +7,11 @@ namespace TicTacToeTDD
     public class TicTacToeTests
     {
         [Test]
-        public void CreateGame_ZeroMoves()
+        public void CreateGame_GameIsInCorrectState()
         {
             var game = new Game();
             Assert.AreEqual(0, game.MovesCounter);
+            Assert.AreEqual(State.Unset, game.GetState(1));
         }
 
         [Test]
@@ -52,7 +53,23 @@ namespace TicTacToeTDD
             Assert.AreEqual(State.Zero, game.GetState(4));
         }
 
+        [Test]
+        public void GetWinner_ZeroesWinVertically_ReturnsZeroes()
+        {
+            var game = new Game();
+            MakeMoves(new int[] { 1, 2, 3, 5, 7, 8 }, game);
 
+            Assert.AreEqual(Winner.Zeroes, game.GetWinner());
+        }
+
+        [Test]
+        public void GetWinner_CrossesWinDiagonal_ReturnsCrosses()
+        {
+            var game = new Game();
+            MakeMoves(new int[] { 3, 1, 5, 4, 7 }, game);
+
+            Assert.AreEqual(Winner.Crosses, game.GetWinner());
+        }
 
         private void MakeMoves(int[] moves, Game game)
         {
