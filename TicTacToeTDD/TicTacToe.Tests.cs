@@ -71,6 +71,15 @@ namespace TicTacToeTDD
             Assert.AreEqual(Winner.Crosses, game.GetWinner());
         }
 
+        [Test]
+        public void GetWinner_GameIsUnfinished_ReturnsGameIsUnfinished()
+        {
+            var game = new Game();
+            MakeMoves(new int[] { 2, 1, 5, 4, 7 }, game);
+
+            Assert.AreEqual(Winner.GameIsUnfinished, game.GetWinner());
+        }
+
         private void MakeMoves(int[] moves, Game game)
         {
             for (int i = 0; i < moves.Length; i++)

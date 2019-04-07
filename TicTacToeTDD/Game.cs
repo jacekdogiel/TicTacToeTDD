@@ -3,7 +3,7 @@
 
 namespace TicTacToeTDD
 {
-    internal class Game
+    public class Game
     {
         public Game()
         {
@@ -33,7 +33,7 @@ namespace TicTacToeTDD
             return _board[index - 1];
         }
 
-        internal Winner GetWinner()
+        public Winner GetWinner()
         {
             return GetWinner(1, 4, 7,
                                 2, 5, 8,
@@ -58,6 +58,9 @@ namespace TicTacToeTDD
 
                 }
             }
+            if (MovesCounter < 9)
+                return Winner.GameIsUnfinished;
+
             return Winner.Draw;
         }
 
